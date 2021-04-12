@@ -1,2 +1,9 @@
-alias kittyl="export THEME=light; kitty -c ~/.config/kitty/kitty.conf -c ~/.config/kitty/solarized-light.conf"
-alias kittyd="export THEME=dark; kitty -c ~/.config/kitty/kitty.conf -c ~/.config/kitty/solarized-dark.conf"
+function kittytheme {
+    CURRTHEME=$THEME
+    export THEME=$1
+    kitty -c ~/.config/kitty/kitty.conf -c ~/.config/kitty/solarized-$1.conf&
+    export THEME=$CURRTHEME
+}
+
+alias kittyl="kittytheme light"
+alias kittyd="kittytheme dark"
